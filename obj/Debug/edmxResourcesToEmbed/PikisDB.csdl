@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pikitikosdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="articulo">
+    <Key>
+      <PropertyRef Name="idArticulo" />
+    </Key>
+    <Property Name="idArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="inventarios" Relationship="Self.ArticuloLinkFK" FromRole="articulo" ToRole="inventario" />
+  </EntityType>
+  <EntityType Name="caracteristica">
+    <Key>
+      <PropertyRef Name="idCaracteristicas" />
+    </Key>
+    <Property Name="idCaracteristicas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescripcionCaracteristicas" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="inventarios" Relationship="Self.CaracteristicasLinkFK" FromRole="caracteristicas" ToRole="inventario" />
+  </EntityType>
+  <EntityType Name="color">
+    <Key>
+      <PropertyRef Name="idColor" />
+    </Key>
+    <Property Name="idColor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescripcionColor" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="inventarios" Relationship="Self.ColorLinkFK" FromRole="color" ToRole="inventario" />
+  </EntityType>
+  <EntityType Name="credito">
+    <Key>
+      <PropertyRef Name="idCredito" />
+    </Key>
+    <Property Name="idCredito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cantidad" Type="Single" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="Tiene" Type="SByte" Nullable="false" />
+    <NavigationProperty Name="persona" Relationship="Self.IDPersonaCreditoFK" FromRole="credito" ToRole="persona" />
+  </EntityType>
+  <EntityType Name="inventario">
+    <Key>
+      <PropertyRef Name="idInventario" />
+    </Key>
+    <Property Name="idInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GenId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ArticuloLink" Type="Int32" Nullable="false" />
+    <Property Name="CaracteristicasLink" Type="Int32" Nullable="false" />
+    <Property Name="ColorLink" Type="Int32" Nullable="false" />
+    <Property Name="TallaLink" Type="Int32" Nullable="false" />
+    <Property Name="TipoArticuloLink" Type="Int32" Nullable="false" />
+    <Property Name="TipoTelaLink" Type="Int32" Nullable="false" />
+    <Property Name="Disponible" Type="Int32" Nullable="false" />
+    <Property Name="Precio" Type="Single" />
+    <NavigationProperty Name="articulo" Relationship="Self.ArticuloLinkFK" FromRole="inventario" ToRole="articulo" />
+    <NavigationProperty Name="caracteristica" Relationship="Self.CaracteristicasLinkFK" FromRole="inventario" ToRole="caracteristicas" />
+    <NavigationProperty Name="color" Relationship="Self.ColorLinkFK" FromRole="inventario" ToRole="color" />
+    <NavigationProperty Name="talla" Relationship="Self.TallaLinkFK" FromRole="inventario" ToRole="talla" />
+    <NavigationProperty Name="tipoarticulo" Relationship="Self.TipoArticuloLinkFK" FromRole="inventario" ToRole="tipoarticulo" />
+    <NavigationProperty Name="tipotela" Relationship="Self.TipoTelaLinkFK" FromRole="inventario" ToRole="tipotela" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Celular" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="creditoes" Relationship="Self.IDPersonaCreditoFK" FromRole="persona" ToRole="credito" />
+    <NavigationProperty Name="ventas" Relationship="Self.IdPersonaFK" FromRole="persona" ToRole="venta" />
+  </EntityType>
+  <EntityType Name="talla">
+    <Key>
+      <PropertyRef Name="idTalla" />
+    </Key>
+    <Property Name="idTalla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescriptionTalla" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="inventarios" Relationship="Self.TallaLinkFK" FromRole="talla" ToRole="inventario" />
+  </EntityType>
+  <EntityType Name="tipoarticulo">
+    <Key>
+      <PropertyRef Name="idTipoArticulo" />
+    </Key>
+    <Property Name="idTipoArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescripcionTipoArticulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="inventarios" Relationship="Self.TipoArticuloLinkFK" FromRole="tipoarticulo" ToRole="inventario" />
+  </EntityType>
+  <EntityType Name="tipotela">
+    <Key>
+      <PropertyRef Name="idTipoTela" />
+    </Key>
+    <Property Name="idTipoTela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescripcionTela" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="inventarios" Relationship="Self.TipoTelaLinkFK" FromRole="tipotela" ToRole="inventario" />
+  </EntityType>
+  <EntityType Name="venta">
+    <Key>
+      <PropertyRef Name="idVenta" />
+    </Key>
+    <Property Name="idVenta" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaVenta" Type="DateTime" Nullable="false" />
+    <Property Name="GenID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Precio" Type="Single" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Descuento" Type="Single" />
+    <Property Name="Credito" Type="Single" />
+    <Property Name="IdPersona" Type="Int32" />
+    <Property Name="DescripcionArticulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="persona" Relationship="Self.IdPersonaFK" FromRole="venta" ToRole="persona" />
+  </EntityType>
+  <Association Name="ArticuloLinkFK">
+    <End Role="articulo" Type="Self.articulo" Multiplicity="1" />
+    <End Role="inventario" Type="Self.inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="articulo">
+        <PropertyRef Name="idArticulo" />
+      </Principal>
+      <Dependent Role="inventario">
+        <PropertyRef Name="ArticuloLink" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CaracteristicasLinkFK">
+    <End Role="caracteristicas" Type="Self.caracteristica" Multiplicity="1" />
+    <End Role="inventario" Type="Self.inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caracteristicas">
+        <PropertyRef Name="idCaracteristicas" />
+      </Principal>
+      <Dependent Role="inventario">
+        <PropertyRef Name="CaracteristicasLink" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ColorLinkFK">
+    <End Role="color" Type="Self.color" Multiplicity="1" />
+    <End Role="inventario" Type="Self.inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="color">
+        <PropertyRef Name="idColor" />
+      </Principal>
+      <Dependent Role="inventario">
+        <PropertyRef Name="ColorLink" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IDPersonaCreditoFK">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="credito" Type="Self.credito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="credito">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TallaLinkFK">
+    <End Role="talla" Type="Self.talla" Multiplicity="1" />
+    <End Role="inventario" Type="Self.inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="talla">
+        <PropertyRef Name="idTalla" />
+      </Principal>
+      <Dependent Role="inventario">
+        <PropertyRef Name="TallaLink" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TipoArticuloLinkFK">
+    <End Role="tipoarticulo" Type="Self.tipoarticulo" Multiplicity="1" />
+    <End Role="inventario" Type="Self.inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoarticulo">
+        <PropertyRef Name="idTipoArticulo" />
+      </Principal>
+      <Dependent Role="inventario">
+        <PropertyRef Name="TipoArticuloLink" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TipoTelaLinkFK">
+    <End Role="tipotela" Type="Self.tipotela" Multiplicity="1" />
+    <End Role="inventario" Type="Self.inventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipotela">
+        <PropertyRef Name="idTipoTela" />
+      </Principal>
+      <Dependent Role="inventario">
+        <PropertyRef Name="TipoTelaLink" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IdPersonaFK">
+    <End Role="persona" Type="Self.persona" Multiplicity="0..1" />
+    <End Role="venta" Type="Self.venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="venta">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pikitikosdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="articuloes" EntityType="Self.articulo" />
+    <EntitySet Name="caracteristicas" EntityType="Self.caracteristica" />
+    <EntitySet Name="colors" EntityType="Self.color" />
+    <EntitySet Name="creditoes" EntityType="Self.credito" />
+    <EntitySet Name="inventarios" EntityType="Self.inventario" />
+    <EntitySet Name="personas" EntityType="Self.persona" />
+    <EntitySet Name="tallas" EntityType="Self.talla" />
+    <EntitySet Name="tipoarticuloes" EntityType="Self.tipoarticulo" />
+    <EntitySet Name="tipotelas" EntityType="Self.tipotela" />
+    <EntitySet Name="ventas" EntityType="Self.venta" />
+    <AssociationSet Name="ArticuloLinkFK" Association="Self.ArticuloLinkFK">
+      <End Role="articulo" EntitySet="articuloes" />
+      <End Role="inventario" EntitySet="inventarios" />
+    </AssociationSet>
+    <AssociationSet Name="CaracteristicasLinkFK" Association="Self.CaracteristicasLinkFK">
+      <End Role="caracteristicas" EntitySet="caracteristicas" />
+      <End Role="inventario" EntitySet="inventarios" />
+    </AssociationSet>
+    <AssociationSet Name="ColorLinkFK" Association="Self.ColorLinkFK">
+      <End Role="color" EntitySet="colors" />
+      <End Role="inventario" EntitySet="inventarios" />
+    </AssociationSet>
+    <AssociationSet Name="IDPersonaCreditoFK" Association="Self.IDPersonaCreditoFK">
+      <End Role="persona" EntitySet="personas" />
+      <End Role="credito" EntitySet="creditoes" />
+    </AssociationSet>
+    <AssociationSet Name="TallaLinkFK" Association="Self.TallaLinkFK">
+      <End Role="talla" EntitySet="tallas" />
+      <End Role="inventario" EntitySet="inventarios" />
+    </AssociationSet>
+    <AssociationSet Name="TipoArticuloLinkFK" Association="Self.TipoArticuloLinkFK">
+      <End Role="tipoarticulo" EntitySet="tipoarticuloes" />
+      <End Role="inventario" EntitySet="inventarios" />
+    </AssociationSet>
+    <AssociationSet Name="TipoTelaLinkFK" Association="Self.TipoTelaLinkFK">
+      <End Role="tipotela" EntitySet="tipotelas" />
+      <End Role="inventario" EntitySet="inventarios" />
+    </AssociationSet>
+    <AssociationSet Name="IdPersonaFK" Association="Self.IdPersonaFK">
+      <End Role="persona" EntitySet="personas" />
+      <End Role="venta" EntitySet="ventas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

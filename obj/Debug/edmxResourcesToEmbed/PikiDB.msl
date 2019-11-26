@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pikitikosdbModelStoreContainer" CdmEntityContainer="pikitikosdbEntities">
+    <EntitySetMapping Name="articuloes">
+      <EntityTypeMapping TypeName="pikitikosdbModel.articulo">
+        <MappingFragment StoreEntitySet="articulo">
+          <ScalarProperty Name="idArticulo" ColumnName="idArticulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="caracteristicas">
+      <EntityTypeMapping TypeName="pikitikosdbModel.caracteristica">
+        <MappingFragment StoreEntitySet="caracteristicas">
+          <ScalarProperty Name="idCaracteristicas" ColumnName="idCaracteristicas" />
+          <ScalarProperty Name="DescripcionCaracteristicas" ColumnName="DescripcionCaracteristicas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="colors">
+      <EntityTypeMapping TypeName="pikitikosdbModel.color">
+        <MappingFragment StoreEntitySet="color">
+          <ScalarProperty Name="idColor" ColumnName="idColor" />
+          <ScalarProperty Name="DescripcionColor" ColumnName="DescripcionColor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="creditoes">
+      <EntityTypeMapping TypeName="pikitikosdbModel.credito">
+        <MappingFragment StoreEntitySet="credito">
+          <ScalarProperty Name="idCredito" ColumnName="idCredito" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Tiene" ColumnName="Tiene" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventarios">
+      <EntityTypeMapping TypeName="pikitikosdbModel.inventario">
+        <MappingFragment StoreEntitySet="inventario">
+          <ScalarProperty Name="idInventario" ColumnName="idInventario" />
+          <ScalarProperty Name="GenId" ColumnName="GenId" />
+          <ScalarProperty Name="ArticuloLink" ColumnName="ArticuloLink" />
+          <ScalarProperty Name="CaracteristicasLink" ColumnName="CaracteristicasLink" />
+          <ScalarProperty Name="ColorLink" ColumnName="ColorLink" />
+          <ScalarProperty Name="TallaLink" ColumnName="TallaLink" />
+          <ScalarProperty Name="TipoArticuloLink" ColumnName="TipoArticuloLink" />
+          <ScalarProperty Name="TipoTelaLink" ColumnName="TipoTelaLink" />
+          <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="visible" ColumnName="visible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagoscreditoes">
+      <EntityTypeMapping TypeName="pikitikosdbModel.pagoscredito">
+        <MappingFragment StoreEntitySet="pagoscredito">
+          <ScalarProperty Name="idPagosCredito" ColumnName="idPagosCredito" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="CreditoActual" ColumnName="CreditoActual" />
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+          <ScalarProperty Name="FechaDePago" ColumnName="FechaDePago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personas">
+      <EntityTypeMapping TypeName="pikitikosdbModel.persona">
+        <MappingFragment StoreEntitySet="persona">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tallas">
+      <EntityTypeMapping TypeName="pikitikosdbModel.talla">
+        <MappingFragment StoreEntitySet="talla">
+          <ScalarProperty Name="idTalla" ColumnName="idTalla" />
+          <ScalarProperty Name="DescriptionTalla" ColumnName="DescriptionTalla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoarticuloes">
+      <EntityTypeMapping TypeName="pikitikosdbModel.tipoarticulo">
+        <MappingFragment StoreEntitySet="tipoarticulo">
+          <ScalarProperty Name="idTipoArticulo" ColumnName="idTipoArticulo" />
+          <ScalarProperty Name="DescripcionTipoArticulo" ColumnName="DescripcionTipoArticulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipotelas">
+      <EntityTypeMapping TypeName="pikitikosdbModel.tipotela">
+        <MappingFragment StoreEntitySet="tipotela">
+          <ScalarProperty Name="idTipoTela" ColumnName="idTipoTela" />
+          <ScalarProperty Name="DescripcionTela" ColumnName="DescripcionTela" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ventas">
+      <EntityTypeMapping TypeName="pikitikosdbModel.venta">
+        <MappingFragment StoreEntitySet="venta">
+          <ScalarProperty Name="idVenta" ColumnName="idVenta" />
+          <ScalarProperty Name="FechaVenta" ColumnName="FechaVenta" />
+          <ScalarProperty Name="GenID" ColumnName="GenID" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="Credito" ColumnName="Credito" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="DescripcionArticulo" ColumnName="DescripcionArticulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
